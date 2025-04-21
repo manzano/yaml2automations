@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+use Manzano\Yaml2Automations\Executar;
+use Manzano\Yaml2Automations\Services\Configuracoes;
+use Manzano\Yaml2Automations\Inc\Y2aException;
+
+$configObj = new Configuracoes();
+$versaoY2A = $configObj->retornarVersao();
+
+$app = new Application('Manzano // Yaml2Automations', $versaoY2A);
+$app->add(new Executar());
+$app->setDefaultCommand('executar', true);
+$app->run();

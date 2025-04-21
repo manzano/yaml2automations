@@ -1,0 +1,32 @@
+{
+  "name": "CV Portal do Cliente - MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ec38de88-51c0-4754-99e5-39b51b4af485"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9e90c038-e496-45d0-87d4-68916b0ef074",
+      "name": "MCP Server Trigger",
+      "webhookId": "ec38de88-51c0-4754-99e5-39b51b4af485"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9c8f20a6-25cb-4e16-bc57-fa0b90636679",
+  "meta": {
+    "instanceId": "a24c8a02c6b8dd99614e179358a27bafbcfafa7e5af0bffc8eb0455cb14fd18f"
+  },
+  "id": "LiaDHugTU31s7ZkK",
+  "tags": []
+}

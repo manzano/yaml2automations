@@ -1,0 +1,38 @@
+{
+  "name": "manzano/yaml2automations",
+  "require": {
+    "symfony/yaml": "^7.2",
+    "symfony/console": "^7.2"
+  },
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Manzano\\Yaml2Automations\\": "src/app/"
+    },
+    "files": [
+      "src/app/Inc/Helper.php",
+      "src/app/Inc/Y2aException.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/",
+      "Support\\": "tests/Support/",
+      "Helper\\": "tests/Support/Helper/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "php vendor/bin/codecept run --coverage --coverage-xml Unit"
+    ]
+  },
+  "bin": [
+    "app"
+  ],
+  "authors": [
+    {
+      "name": "Gabriel Manzano",
+      "email": "gabriel@cvcrm.com.br"
+    }
+  ]
+}

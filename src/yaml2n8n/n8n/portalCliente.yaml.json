@@ -1,0 +1,187 @@
+{
+    "name": "CV Portal do Cliente - MCP Server",
+    "nodes": [
+        {
+            "parameters": {
+                "path": "portaldocliente"
+            },
+            "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+            "typeVersion": 1,
+            "position": [
+                0,
+                0
+            ],
+            "id": "9e90c038-e496-45d0-87d4-68916b0ef074",
+            "name": "MCP Server Trigger",
+            "webhookId": "portaldocliente"
+        },
+        {
+            "parameters": {
+                "content": "## pessoa",
+                "color": 5
+            },
+            "type": "n8n-nodes-base.stickyNote",
+            "typeVersion": 1,
+            "position": [
+                -100,
+                200
+            ],
+            "id": "cac858cfbc57a0d03a16b80f2ccec9b6",
+            "name": "Sticky Note do path pessoa"
+        },
+        {
+            "parameters": {
+                "toolDescription": "Realizar cadastro de um novo cliente",
+                "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+                "sendHeaders": true,
+                "parametersHeaders": {
+                    "values": [
+                        {
+                            "name": "email",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_email}"
+                        },
+                        {
+                            "name": "token",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_token}"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "sendBody": true,
+                "parametersBody": {
+                    "values": [
+                        {
+                            "name": "idlead",
+                            "valueProvider": "modelOptional"
+                        }
+                    ]
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+            "typeVersion": 1.1,
+            "position": [
+                250,
+                200
+            ],
+            "id": "3aa11dc589b544ddce67d928db567a25",
+            "name": "Realizar cadastro de um novo cliente"
+        },
+        {
+            "parameters": {
+                "toolDescription": "Retorna os dados do cliente logado",
+                "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+                "sendHeaders": true,
+                "parametersHeaders": {
+                    "values": [
+                        {
+                            "name": "email",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_email}"
+                        },
+                        {
+                            "name": "token",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_token}"
+                        }
+                    ]
+                },
+                "method": "GET"
+            },
+            "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+            "typeVersion": 1.1,
+            "position": [
+                500,
+                200
+            ],
+            "id": "745a594963d5194124d132b1d5ac5197",
+            "name": "Retorna os dados do cliente logado"
+        },
+        {
+            "parameters": {
+                "toolDescription": "Modifica o cliente de acordo com os dados passados",
+                "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+                "sendHeaders": true,
+                "parametersHeaders": {
+                    "values": [
+                        {
+                            "name": "email",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_email}"
+                        },
+                        {
+                            "name": "token",
+                            "valueProvider": "fieldValue",
+                            "value": "{header_token}"
+                        }
+                    ]
+                },
+                "method": "PUT",
+                "sendBody": true,
+                "parametersBody": {
+                    "values": [
+                        {
+                            "name": "idlead",
+                            "valueProvider": "modelOptional"
+                        }
+                    ]
+                }
+            },
+            "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+            "typeVersion": 1.1,
+            "position": [
+                750,
+                200
+            ],
+            "id": "c6fac8a2eefe203e4d00e788269a86fb",
+            "name": "Modifica o cliente de acordo com os dados passados"
+        }
+    ],
+    "pinData": [],
+    "connections": {
+        "Realizar cadastro de um novo cliente": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "MCP Server Trigger",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Retorna os dados do cliente logado": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "MCP Server Trigger",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Modifica o cliente de acordo com os dados passados": {
+            "ai_tool": [
+                [
+                    {
+                        "node": "MCP Server Trigger",
+                        "type": "ai_tool",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "9c8f20a6-25cb-4e16-bc57-fa0b90636679",
+    "meta": {
+        "instanceId": "a24c8a02c6b8dd99614e179358a27bafbcfafa7e5af0bffc8eb0455cb14fd18f"
+    },
+    "id": "LiaDHugTU31s7ZkK",
+    "tags": []
+}

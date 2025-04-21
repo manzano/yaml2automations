@@ -1,0 +1,4343 @@
+{
+  "name": "CV Portal do Cliente - MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "portaldocliente"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        480
+      ],
+      "id": "0783d49b-b1c2-4693-9e39-56185bb94b72",
+      "name": "MCP Server Trigger",
+      "webhookId": "portaldocliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realizar cadastro de um novo cliente",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        680
+      ],
+      "id": "d78b08bb-4a15-4f7c-a216-bed0e9980dc0",
+      "name": "Realizar cadastro de um novo cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os dados do cliente logado",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        680
+      ],
+      "id": "ad3da444-f390-411a-8412-7cc2f344f5c6",
+      "name": "Retorna os dados do cliente logado"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Modifica o cliente de acordo com os dados passados",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        680
+      ],
+      "id": "71495796-4f5e-4596-b2b9-8ae493026114",
+      "name": "Modifica o cliente de acordo com os dados passados"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os dados do síndico logado",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/sindico",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        880
+      ],
+      "id": "0ed119ad-704e-447f-9ad3-64338d4ad5ce",
+      "name": "Retorna os dados do síndico logado"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Modifica o síndico de acordo com os dados passados",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/sindico",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        880
+      ],
+      "id": "ec817fd0-548b-4ee2-858c-f9bc43dbe48a",
+      "name": "Modifica o síndico de acordo com os dados passados"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna uma única configuração que estiver ativa",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/configuracoes",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        1080
+      ],
+      "id": "2c5b9355-21a5-4e76-8218-9dbe5e80e47e",
+      "name": "Retorna as configurações do painel do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os banners ativos do painel do cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/banners",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        1280
+      ],
+      "id": "70e00e0a-80ac-4574-862f-65e9964b7cf9",
+      "name": "Retorna os banners ativos do painel do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os boletos que o cliente possui em determinada unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro-cv",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        1480
+      ],
+      "id": "5d10dfa0-294b-4a12-9fbe-3ee1e70bf150",
+      "name": "Retorna os boletos que o cliente possui em determinada unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os extratos que o cliente possui em determinada unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro-cv",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        1480
+      ],
+      "id": "df535271-1007-46b5-9c81-aba8c2a9e0c2",
+      "name": "Retorna os extratos que o cliente possui em determinada unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna o IR que o cliente possui em determinada unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro-cv",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        1480
+      ],
+      "id": "0342d015-c86b-4d6d-addd-afccbc1aea76",
+      "name": "Retorna o IR que o cliente possui em determinada unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os boletos que o cliente possui",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        1680
+      ],
+      "id": "e9fa917b-35a9-41ea-b556-36b28e935ab0",
+      "name": "Retorna os boletos que o cliente possui"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna um link com o pdf gerado do boleto",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        1680
+      ],
+      "id": "3c2208b3-da9d-476e-a0b0-69b69344bb9f",
+      "name": "Retorna um link com o pdf gerado do boleto"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as unidades que é possivel requisitar o relatório de imposto de renda",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        1680
+      ],
+      "id": "78e4f6b9-b01a-4780-880b-9e06fb67b679",
+      "name": "Retorna as unidades que é possivel requisitar o relatório de imposto de renda"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Solicitação o envio do relatório do imposto de renda no Sienge",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        1680
+      ],
+      "id": "6d165fa2-a4b7-4cfb-af28-60eadc21d61a",
+      "name": "Solicitação o envio do relatório do imposto de renda no Sienge"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Link para download do relatório do imposto de renda no Sienge",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        1680
+      ],
+      "id": "ab7c8b22-e193-4e0d-9d3f-5b37859bcce9",
+      "name": "Link para download do relatório do imposto de renda no Sienge"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna o extrato do cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        1680
+      ],
+      "id": "a06b3ed9-cd05-4603-a1be-3cdbe010ff44",
+      "name": "Retorna o extrato do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna um link com o pdf gerado do extrato",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3720,
+        1680
+      ],
+      "id": "187f132c-aff0-410b-9c32-c240420b4b2b",
+      "name": "Retorna um link com o pdf gerado do extrato"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna um link com o pdf do saldo devedor",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        1680
+      ],
+      "id": "8faa85eb-70e4-4e9d-84eb-b361f7114635",
+      "name": "Retorna um link com o pdf do saldo devedor"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Envia o extrato do cliente por e-mail",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4120,
+        1680
+      ],
+      "id": "55da3af4-d46a-4d83-8120-9135060ad5d1",
+      "name": "Envia o extrato do cliente por e-mail"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os parcelas disponiveis para antecipação de uma unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4320,
+        1680
+      ],
+      "id": "73ac07d3-e9c6-4c0b-b96c-fb0312e4843c",
+      "name": "Retorna os parcelas disponiveis para antecipação de uma unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as parcelas antecipadas de uma unidade que foram confirmadas",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4520,
+        1680
+      ],
+      "id": "dc1fcda0-37b1-4d90-86e0-101d79567485",
+      "name": "Retorna as parcelas antecipadas de uma unidade que foram confirmadas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realiza a simulação de Antecipação de Parcelas",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4720,
+        1680
+      ],
+      "id": "b79e02d1-51d2-406b-91a2-b4a4287e62ab",
+      "name": "Realiza a simulação de Antecipação de Parcelas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realiza a solicitação de Antecipação de Parcelas",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4920,
+        1680
+      ],
+      "id": "7c81fff8-fc8d-4fb3-a244-be0a8f6e6505",
+      "name": "Realiza a solicitação de Antecipação de Parcelas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os reparcelamentos realizados de uma unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5120,
+        1680
+      ],
+      "id": "f2cc31ba-0417-42bc-a6a8-5cb956baeaa5",
+      "name": "Retorna os reparcelamentos realizados de uma unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realiza o reparcelamento de uma ou mais parcelas",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/financeiro",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        5320,
+        1680
+      ],
+      "id": "4442f4cb-d099-42dd-9fc6-27763e5d00c5",
+      "name": "Realiza o reparcelamento de uma ou mais parcelas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retona os dados das unidades ativas associadas ao usuário",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/unidades",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        1880
+      ],
+      "id": "81609fb0-8f33-4153-ba73-e95ee9ccb792",
+      "name": "Retona os dados das unidades ativas associadas ao usuário"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retona os dados da unidade ativas filtrada pelo seu id",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/unidades",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        1880
+      ],
+      "id": "4aeb7d7a-bd33-4961-bb43-36fd08119293",
+      "name": "Retona os dados da unidade ativas filtrada pelo seu id"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retona os documentos da unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/unidades",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        1880
+      ],
+      "id": "6c1014fe-2f59-4550-895c-f5ae116efeb5",
+      "name": "Retona os documentos da unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retona os dados dos empreendimentos associados ao cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        2080
+      ],
+      "id": "8cbccbd3-2d1f-4928-b049-659defee7547",
+      "name": "Retona os dados dos empreendimentos associados ao cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Opcionalmente pode ser informado o parâmetro **documento** para filtrar os empreendimentos. Mostrando, assim, apenas os empreendimentos quais possuem reservas com o CPF/CNPJ do cliente informado.",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        2080
+      ],
+      "id": "9391521a-1590-43dc-8425-d3f4ae714e7d",
+      "name": "Retona os dados dos empreendimentos ativos no sistemas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna a galeria de fotos de um empreendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        2080
+      ],
+      "id": "ee14d8d0-4332-42fa-ad57-4d790b5f78a2",
+      "name": "Retorna a galeria de fotos de um empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna a galeria de fotos de uma unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        2080
+      ],
+      "id": "3a8236cf-45a4-4233-913b-95c2935e6cf0",
+      "name": "Retorna a galeria de fotos de uma unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os estágios do andamento da obra de um empreendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        2080
+      ],
+      "id": "58eedee5-bc2e-4cf1-8feb-b968861c7b0e",
+      "name": "Retorna os estágios do andamento da obra de um empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os estágios do andamento da obra de uma unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        2080
+      ],
+      "id": "10054f6b-35d0-4ca2-b951-db524cccc6e2",
+      "name": "Retorna os estágios do andamento da obra de uma unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os comunicados dos empreendimentos referente ao cliente logado",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/comunicados",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        2280
+      ],
+      "id": "84e443ef-7740-48bd-8b52-6faa67a5ee93",
+      "name": "Retorna os comunicados dos empreendimentos referente ao cliente logado"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os comunicados do empreendimento buscado",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        2480
+      ],
+      "id": "811235f5-fe3b-4bc2-aab2-51130afb46bc",
+      "name": "Retorna os comunicados do empreendimento buscado"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os dados de um atendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        2680
+      ],
+      "id": "be6b9ccc-9bd2-4fea-87c8-9909323d8d65",
+      "name": "Retorna os dados de um atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os atendimentos ativos que o cliente está associado e é permitido a visualização",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        2680
+      ],
+      "id": "7210b151-83b2-4204-a329-20c0210a59fa",
+      "name": "Retorna os atendimentos ativos que o cliente está associado e é permitido a visualização"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realiza o cadastro de um atendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        2680
+      ],
+      "id": "ef75da81-442a-4d31-800a-37cf902b3f87",
+      "name": "Realiza o cadastro de um atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Faz o upload dos arquivos do atendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimento",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        2880
+      ],
+      "id": "814dfb89-b509-4888-85a7-2cc9bdd489ab",
+      "name": "Faz o upload dos arquivos do atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Responde um determinado atendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        3080
+      ],
+      "id": "3b2846ea-dc31-4a86-b385-fd24a7fcec4a",
+      "name": "Responde um determinado atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Avalia um atendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        3080
+      ],
+      "id": "3e3417b4-ae7f-44bd-b475-3ec3fdc91818",
+      "name": "Avalia um atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os assuntos do atendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        3080
+      ],
+      "id": "215f250a-d548-4f3d-8d1e-12f4527a3f81",
+      "name": "Retorna os assuntos do atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os subassuntos de assunto do atendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        3080
+      ],
+      "id": "8dde23bc-45ab-4495-a5f7-7b32c5534911",
+      "name": "Retorna os subassuntos de assunto do atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as areas comum do atendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        3080
+      ],
+      "id": "949ccfbc-ff92-472a-8ba3-6393c7554b99",
+      "name": "Retorna as areas comum do atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as situaçõea possíveis em um atendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/atendimentos",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        3080
+      ],
+      "id": "b0a5fdfd-007d-474d-b728-51b337bde651",
+      "name": "Retorna as situaçõea possíveis em um atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os agendamentos ativos que o cliente está associado",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        3280
+      ],
+      "id": "0ddd897a-86ee-4e9f-9c9b-d1f3f8f213d4",
+      "name": "Retorna os agendamentos ativos que o cliente está associado"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Cadastrar um agendamento para o cliente",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        3280
+      ],
+      "id": "d6cd71a8-b6c8-424f-8dd4-452a9f6cf586",
+      "name": "Cadastrar um agendamento para o cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna dados de um determinado agendamento com a unidade",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        3280
+      ],
+      "id": "96ec5918-1ff1-456c-8a37-903f8b85af08",
+      "name": "Retorna dados de um determinado agendamento com a unidade"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as unidades do cliente disponíveis para agendamento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        3280
+      ],
+      "id": "b8777d8e-50be-44e0-8103-7c102c4984f5",
+      "name": "Retorna as unidades do cliente disponíveis para agendamento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Cancelar um determinado agendamento, seja visita ou vistoria",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        3280
+      ],
+      "id": "e4036c79-c7c9-466b-a43e-dfb3ece5cbfc",
+      "name": "Cancelar um determinado agendamento, seja visita ou vistoria"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os horários disponíveis para agendamento em uma determinada unidade em uma data",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        3280
+      ],
+      "id": "94d5bde1-334f-4fc4-9a94-96050c47dbff",
+      "name": "Retorna os horários disponíveis para agendamento em uma determinada unidade em uma data"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as datas disponíveis para agendamento de determinado empreendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3720,
+        3280
+      ],
+      "id": "aa9cc445-2955-4af1-ba83-f59acf242036",
+      "name": "Retorna as datas disponíveis para agendamento de determinado empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as situações possíveis para um agendamento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/agendamentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        3280
+      ],
+      "id": "f7dc468e-3340-463f-a7c8-6fad886ca801",
+      "name": "Retorna as situações possíveis para um agendamento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornará um dos atributos 'unidade', 'unidade_avulsa', 'area' ou 'localidade' de acordo com os dados cadastrados na assistência.",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencias",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        3480
+      ],
+      "id": "316c493e-7b99-4b29-a03f-fcd956facb07",
+      "name": "Retorna as assistências técnicas do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as situações possíveis para uma assistência tecnica",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencias",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        3480
+      ],
+      "id": "e01c1939-716e-4bcb-80b6-cc724ab3dcf2",
+      "name": "Retorna as situações possíveis para uma assistência tecnica"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornará um dos atributos 'unidade', 'unidade_avulsa', 'area' ou 'localidade' de acordo com os dados cadastrados na assistência.",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        3680
+      ],
+      "id": "16e10b06-0baa-42a4-ad83-8aa182892ce8",
+      "name": "Retorna os dados de uma assistência técnica"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Para o cadastro de uma assistência técnica é pelo menos um item da assistência e os valores de um dos atributos de entre 'unidade', 'unidade_avulsa', 'area' e 'localidade'.",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        3680
+      ],
+      "id": "8775377c-6d7e-4863-a733-fc8afbf97ebf",
+      "name": "Realiza o cadastro de uma nova assistência técnica"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Faz o upload dos arquivos na mensagem da assistência",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        3680
+      ],
+      "id": "347cb23f-a339-4acb-a262-9577b896b42e",
+      "name": "Faz o upload dos arquivos na mensagem da assistência"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Faz o upload dos arquivos da assistência",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        3680
+      ],
+      "id": "d6ad74c6-22c3-4147-8600-97286d476edf",
+      "name": "Faz o upload dos arquivos da assistência"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Cadastra uma mensagem na assistência",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        3680
+      ],
+      "id": "437cf6e6-d363-43a1-8ce4-f33b5afd475d",
+      "name": "Cadastra uma mensagem na assistência"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os itens de manutenção das assistências técnicas",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        3680
+      ],
+      "id": "209b9a4d-59e9-457f-8db6-790ca087c0e6",
+      "name": "Retorna os itens de manutenção das assistências técnicas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as localidades das assistências técnicas",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3720,
+        3680
+      ],
+      "id": "7f011a64-7454-4f13-b6e0-a102e33c417c",
+      "name": "Retorna as localidades das assistências técnicas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as áreas comuns das assistências técnicas",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3920,
+        3680
+      ],
+      "id": "10c48eb4-ef2f-4d57-b693-d4d6281c453a",
+      "name": "Retorna as áreas comuns das assistências técnicas"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as datas disponíveis para visita técnica de acordo com o item",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4120,
+        3680
+      ],
+      "id": "8ee7ccfb-9486-4485-958d-6b095eb9a5fc",
+      "name": "Retorna as datas disponíveis para visita técnica de acordo com o item"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os horários disponíveis para visita técnica para a data informada",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4320,
+        3680
+      ],
+      "id": "55b17e11-62db-4af0-af0d-f1da2be647e5",
+      "name": "Retorna os horários disponíveis para visita técnica para a data informada"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Cadastra uma visita técnica",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/assistencia",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        4520,
+        3680
+      ],
+      "id": "ab48757c-630a-4da9-a182-7b28639c189e",
+      "name": "Cadastra uma visita técnica"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os marketplaces vinculados a um portal do cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/portal-beneficios",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        3880
+      ],
+      "id": "9db6b8dc-5ff9-4ad9-8e47-e81918629744",
+      "name": "Retorna os marketplaces vinculados a um portal do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as perguntas frequentes do portal",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/perguntas-frequentes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        4080
+      ],
+      "id": "d7935663-aea9-4d89-b874-795c5d1af198",
+      "name": "Retorna as perguntas frequentes do portal"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Modifica o endereço do usuário",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pessoa",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        4280
+      ],
+      "id": "88849d56-2e6c-48ca-a7ed-8c969d543ee4",
+      "name": "Modifica o endereço do usuário"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar as pesquisas ativas para o usuário",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pesquisas",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        4480
+      ],
+      "id": "107e1f1b-66c7-4de4-98f4-11c09a459be1",
+      "name": "Retornar as pesquisas ativas para o usuário"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as resposta do cliente de uma pesquisa",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/pesquisas",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        4480
+      ],
+      "id": "58cc6d68-ad61-4563-a103-7b4eea6e61d5",
+      "name": "Retorna as resposta do cliente de uma pesquisa"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar os contratos das unidades do cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/contratos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        4680
+      ],
+      "id": "f8914dc9-0504-4b83-a046-cd1514a0c809",
+      "name": "Retornar os contratos das unidades do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar os logradouros cadastrados no sistema",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/endereco",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        4880
+      ],
+      "id": "86ed4123-3032-493e-bf0d-504f6f4dfe50",
+      "name": "Retornar os logradouros cadastrados no sistema"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar os estados cadastrados no sistema",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/endereco",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        4880
+      ],
+      "id": "fcdd0f3d-801e-45dd-b203-fef6488b386c",
+      "name": "Retornar os estados cadastrados no sistema"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar as cidades de um estado cadastrados no sistema",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/endereco",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        4880
+      ],
+      "id": "a1cda1ce-f765-4ea4-a76a-ee74bd0ce062",
+      "name": "Retornar as cidades de um estado cadastrados no sistema"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os documentos do empreendimento do cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        5080
+      ],
+      "id": "9d87781e-97c0-49e9-9079-244616d1ba29",
+      "name": "Retorna os documentos do empreendimento do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os documentos do síndico do empreendimento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        5080
+      ],
+      "id": "00111e7b-5fe6-419b-bfa7-ba9658f845fa",
+      "name": "Retorna os documentos do síndico do empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Realiza o cadastro dos arquivos do síndico no empreendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        5080
+      ],
+      "id": "7a9f56f7-ede8-4d0b-9c84-38e02449f1dc",
+      "name": "Realiza o cadastro dos arquivos do síndico no empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Faz o upload dos arquivos do síndico do empreendimento",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/empreendimentos",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        5080
+      ],
+      "id": "4038641a-edb0-4c97-ba8c-5fdd38969891",
+      "name": "Faz o upload dos arquivos do síndico do empreendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os documentos do síndico ",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/documentos-sindico",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        5280
+      ],
+      "id": "9448d589-84d5-4ffb-ba57-b0fff5e6cae1",
+      "name": "Retorna os documentos do síndico "
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar as associações ao cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        5480
+      ],
+      "id": "d2c3b128-797e-49ff-9792-c5da030ca91f",
+      "name": "Retornar as associações ao cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Adiciona uma associação do cliente",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        5480
+      ],
+      "id": "33e741ca-ba38-4ce1-8459-88fc064ea13b",
+      "name": "Adiciona uma associação do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Adiciona uma associação de uma pessoa não cadastrada no sistema",
+        "method": "POST",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2920,
+        5480
+      ],
+      "id": "f54db0a1-e9eb-4619-a4f0-9f5f03a28c59",
+      "name": "Adiciona uma associação de uma pessoa não cadastrada no sistema"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Remove uma associação do cliente",
+        "method": "DELETE",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3120,
+        5480
+      ],
+      "id": "93cecd7c-e5aa-4cce-8ac6-632866527188",
+      "name": "Remove uma associação do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Atualiza os dados de uma associação do cliente",
+        "method": "PUT",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendQuery": true,
+        "parametersQuery": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "idlead",
+              "valueProvider": "modelOptional"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3320,
+        5480
+      ],
+      "id": "5f3b57cd-45ae-4eba-bef0-afdaedb73e8f",
+      "name": "Atualiza os dados de uma associação do cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retornar os tipos de associações cadastrados no sistema",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/associacoes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3520,
+        5480
+      ],
+      "id": "48aa4fd6-8e8e-49ff-be6e-ba94ed8dd54a",
+      "name": "Retornar os tipos de associações cadastrados no sistema"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna as últimas notificações de um cliente",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/notificacoes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        5680
+      ],
+      "id": "6a5ce87d-d1c0-4bb8-ae0b-00aee402cc02",
+      "name": "Retorna as últimas notificações de um cliente"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Retorna os pré cadastros do cliente pendentes de documento",
+        "url": "=https://{dominiodocliente}.cvcrm.com.br/api/v1/cliente/precadastros-pendentes",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "email",
+              "valueProvider": "fieldValue",
+              "value": "{header_email}"
+            },
+            {
+              "name": "token",
+              "valueProvider": "fieldValue",
+              "value": "{header_token}"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        5880
+      ],
+      "id": "39c2cfeb-007c-45cf-b529-a08ecc034e60",
+      "name": "Retorna os pré cadastros do cliente pendentes de documento"
+    },
+    {
+      "parameters": {
+        "content": "## /pessoa",
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        660
+      ],
+      "id": "4d9d5684-6ac3-4594-b4f2-17846cfdb0fd",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Realizar cadastro de um novo cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os dados do cliente logado": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modifica o cliente de acordo com os dados passados": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os dados do síndico logado": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modifica o síndico de acordo com os dados passados": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as configurações do painel do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os banners ativos do painel do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os boletos que o cliente possui em determinada unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os extratos que o cliente possui em determinada unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna o IR que o cliente possui em determinada unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os boletos que o cliente possui": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna um link com o pdf gerado do boleto": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as unidades que é possivel requisitar o relatório de imposto de renda": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Solicitação o envio do relatório do imposto de renda no Sienge": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Link para download do relatório do imposto de renda no Sienge": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna o extrato do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna um link com o pdf gerado do extrato": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna um link com o pdf do saldo devedor": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia o extrato do cliente por e-mail": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os parcelas disponiveis para antecipação de uma unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as parcelas antecipadas de uma unidade que foram confirmadas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza a simulação de Antecipação de Parcelas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza a solicitação de Antecipação de Parcelas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os reparcelamentos realizados de uma unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza o reparcelamento de uma ou mais parcelas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retona os dados das unidades ativas associadas ao usuário": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retona os dados da unidade ativas filtrada pelo seu id": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retona os documentos da unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retona os dados dos empreendimentos associados ao cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retona os dados dos empreendimentos ativos no sistemas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna a galeria de fotos de um empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna a galeria de fotos de uma unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os estágios do andamento da obra de um empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os estágios do andamento da obra de uma unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os comunicados dos empreendimentos referente ao cliente logado": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os comunicados do empreendimento buscado": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os dados de um atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os atendimentos ativos que o cliente está associado e é permitido a visualização": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza o cadastro de um atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faz o upload dos arquivos do atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responde um determinado atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avalia um atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os assuntos do atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os subassuntos de assunto do atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as areas comum do atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as situaçõea possíveis em um atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os agendamentos ativos que o cliente está associado": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastrar um agendamento para o cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna dados de um determinado agendamento com a unidade": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as unidades do cliente disponíveis para agendamento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cancelar um determinado agendamento, seja visita ou vistoria": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os horários disponíveis para agendamento em uma determinada unidade em uma data": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as datas disponíveis para agendamento de determinado empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as situações possíveis para um agendamento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as assistências técnicas do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as situações possíveis para uma assistência tecnica": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os dados de uma assistência técnica": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza o cadastro de uma nova assistência técnica": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faz o upload dos arquivos na mensagem da assistência": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faz o upload dos arquivos da assistência": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastra uma mensagem na assistência": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os itens de manutenção das assistências técnicas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as localidades das assistências técnicas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as áreas comuns das assistências técnicas": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as datas disponíveis para visita técnica de acordo com o item": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os horários disponíveis para visita técnica para a data informada": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cadastra uma visita técnica": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os marketplaces vinculados a um portal do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as perguntas frequentes do portal": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modifica o endereço do usuário": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar as pesquisas ativas para o usuário": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as resposta do cliente de uma pesquisa": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar os contratos das unidades do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar os logradouros cadastrados no sistema": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar os estados cadastrados no sistema": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar as cidades de um estado cadastrados no sistema": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os documentos do empreendimento do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os documentos do síndico do empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realiza o cadastro dos arquivos do síndico no empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Faz o upload dos arquivos do síndico do empreendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os documentos do síndico ": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar as associações ao cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona uma associação do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona uma associação de uma pessoa não cadastrada no sistema": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove uma associação do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza os dados de uma associação do cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retornar os tipos de associações cadastrados no sistema": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna as últimas notificações de um cliente": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retorna os pré cadastros do cliente pendentes de documento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "499c0597-3582-4d7a-bac9-209e9b109704",
+  "meta": {
+    "instanceId": "a24c8a02c6b8dd99614e179358a27bafbcfafa7e5af0bffc8eb0455cb14fd18f"
+  },
+  "id": "LiaDHugTU31s7ZkK",
+  "tags": []
+}
